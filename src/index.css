@@ -1,11 +1,60 @@
-/* Tipografía global */
+/* Tematica LIGHT y DARK MODE */
+
+:root {
+  --bg: #F5F7FA;
+  --text: #1A3C57;
+  --card-bg: #FFFFFF;
+  --border: #D9E1E8;
+  --table-header: #E9EEF3;
+  --table-row: #FFFFFF;
+}
+
+.dark {
+  --bg: #0d1117;
+  --text: #e6edf3;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --table-header: #21262d;
+  --table-row: #161b22;
+}
+
+/* */
+
+/* Enlaces dentro de la tabla (nombres de criptos) */
+.table td a {
+  color: var(--text) !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.dark .table td a {
+  color: #ffffff !important; /* blanco puro para máximo contraste */
+}
+
+.dark .table td a:hover {
+  color: #4caf50 !important; /* verde elegante en hover */
+}
+
+
+
+
+/* Colores base*/
+
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: 'Inter', sans-serif;
-  background-color: #F5F7FA;
-  color: #1A3C57;
 }
+
+* {
+  transition: background-color 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease;
+}
+
+/* Componentes generales */
 
 /* Contenedor general */
 .container {
@@ -14,18 +63,19 @@ body {
   padding: 24px;
 }
 
-/* Tarjetas */
-.card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+.search-bar {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+/* Tarjetas */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 /* Tabla */
@@ -38,19 +88,68 @@ body {
   text-align: left;
   padding: 12px;
   font-weight: 600;
-  background: #E9EEF3;
+  background: var(--table-header);
+  color: var(--text);
 }
 
 .table td {
   padding: 12px;
-  border-bottom: 1px solid #D9E1E8;
+  background: var(--table-row);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
 }
 
 /* Colores dinámicos */
 .text-green {
-  color: #81C784;
+  color: #4caf50;
 }
 
 .text-red {
-  color: #E57373;
+  color: #e57373;
+}
+
+/* Botones */
+button {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #238636;
+  color: white;
+  border-color: #238636;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #8b949e;
+}
+
+/* Skeleton - loading */
+
+.skeleton {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
