@@ -44,7 +44,7 @@ if (isLoading) {
             <th>Precio</th>
             <th>Cambio 24h</th>
             <th>Market Cap</th>
-            <th>Fav</th>
+            <th> </th>
           </tr>
         </thead>
 
