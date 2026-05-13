@@ -1,4 +1,5 @@
 import * as Toggle from "@radix-ui/react-toggle";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const toggleDark = () => {
@@ -13,7 +14,18 @@ export default function Header() {
         marginBottom: "20px",
       }}
     >
-      <h1 style={{ margin: 0 }}>CryptoTracker</h1>
+      <h1 style={{ margin: 0 }}>
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            cursor: "pointer",
+          }}
+        >
+          CryptoTracker
+        </Link>
+      </h1>
       <p style={{ opacity: 0.7, marginTop: "4px" }}>Datos en tiempo real</p>
 
       {/* BOTONES AESTHETIC */}
