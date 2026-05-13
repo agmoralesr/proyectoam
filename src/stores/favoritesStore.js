@@ -1,3 +1,4 @@
+// src/stores/favoritesStore.js
 import { atom } from "nanostores";
 
 // Cargar favoritos desde localStorage
@@ -5,16 +6,13 @@ const saved = JSON.parse(localStorage.getItem("favorites") || "[]");
 
 export const favorites = atom(saved);
 
-// Función para alternar favoritos
+// Función oficial para alternar favoritos
 export function toggleFavorite(id) {
   const current = favorites.get();
 
-  let updated;
-  if (current.includes(id)) {
-    updated = current.filter(f => f !== id);
-  } else {
-    updated = [...current, id];
-  }
+  const updated = current.includes(id)
+    ? current.filter((f) => f !== id)
+    : [...current, id];
 
   favorites.set(updated);
   localStorage.setItem("favorites", JSON.stringify(updated));

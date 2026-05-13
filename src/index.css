@@ -7,6 +7,7 @@
   --border: #D9E1E8;
   --table-header: #E9EEF3;
   --table-row: #FFFFFF;
+  --accent: #7b5cff;
 }
 
 .dark {
@@ -152,4 +153,16 @@ input::placeholder {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

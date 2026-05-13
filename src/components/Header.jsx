@@ -1,3 +1,5 @@
+import * as Toggle from "@radix-ui/react-toggle";
+
 export default function Header() {
   const toggleDark = () => {
     document.body.classList.toggle("dark");
@@ -14,49 +16,51 @@ export default function Header() {
       <h1 style={{ margin: 0 }}>CryptoTracker</h1>
       <p style={{ opacity: 0.7, marginTop: "4px" }}>Datos en tiempo real</p>
 
-      {/* BOTONES */}
+      {/* BOTONES AESTHETIC */}
       <div
         style={{
           marginTop: "20px",
           display: "flex",
           justifyContent: "center",
           gap: "12px",
+          background: "rgba(255,255,255,0.1)",
+          padding: "8px",
+          borderRadius: "999px",
+          backdropFilter: "blur(10px)",
+          border: "1px solid var(--border)",
         }}
       >
-        {/* Cambiar modo */}
-        <button
+        {/* MODO OSCURO */}
+        <Toggle.Root
           onClick={toggleDark}
           style={{
-            padding: "10px 22px",
+            padding: "10px 18px",
             borderRadius: "999px",
-            border: "1px solid var(--border)",
             background: "var(--card-bg)",
             color: "var(--text)",
-            fontSize: "14px",
+            border: "1px solid var(--border)",
             cursor: "pointer",
             transition: "0.2s",
           }}
         >
-          🌙 Modo
-        </button>
+          🌙
+        </Toggle.Root>
 
-        {/* Favoritos */}
-        <a
-          href="/favoritos"
+        {/* FAVORITOS */}
+        <Toggle.Root
+          onClick={() => (window.location.href = "/favoritos")}
           style={{
-            padding: "10px 22px",
+            padding: "10px 18px",
             borderRadius: "999px",
-            border: "1px solid var(--border)",
             background: "var(--card-bg)",
             color: "var(--text)",
-            fontSize: "14px",
-            textDecoration: "none",
+            border: "1px solid var(--border)",
             cursor: "pointer",
             transition: "0.2s",
           }}
         >
-          ⭐ Favs
-        </a>
+          ⭐
+        </Toggle.Root>
       </div>
     </header>
   );

@@ -1,17 +1,17 @@
 import { useStore } from "@nanostores/react";
-import { favorites } from "../stores/favoritesStore";
+import { favorites, toggleFavorite } from "../stores/favoritesStore";
 import { cryptoList, loading } from "../stores/cryptoStore";
-import CryptoItem from "../components/CryptoItem";
-
+import FavoriteItem from "../components/FavoriteItem";
 
 export default function Favorites() {
   const favs = useStore(favorites);
   const coins = useStore(cryptoList);
   const isLoading = useStore(loading);
 
-if (isLoading) {
-  return <p>Cargando favoritos...</p>;
-}
+  if (isLoading) {
+    return <p>Cargando favoritos...</p>;
+  }
+
   const filtered = coins.filter((c) => favs.includes(c.id));
 
   return (
@@ -37,23 +37,23 @@ if (isLoading) {
 
       {filtered.length === 0 && <p>No tienes favoritos aún.</p>}
 
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Cripto</th>
-            <th>Precio</th>
-            <th>Cambio 24h</th>
-            <th>Market Cap</th>
-            <th> </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {filtered.map((coin) => (
-            <CryptoItem key={coin.id} coin={coin} />
-          ))}
-        </tbody>
-      </table>
+      <div
+        style={{
+          marginTop: "20px",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+          gap: "20px",
+        }}
+      >
+        {filtered.map((coin) => (
+          <FavoriteItem
+            key={coin.id}
+            coin={coin}
+            toggleFavorite={toggleFavorite}
+          />
+        ))}
+      </div>
     </div>
   );
 }
+
