@@ -24,10 +24,10 @@ export default function CryptoList() {
   // Si hay búsqueda, usamos los resultados filtrados
   const listToShow = filtered.length > 0 ? filtered : coins;
 
-  // ⭐ APLICAR FILTROS AQUÍ (ANTES DEL MAP)
+  // ⭐ FILTROS PARA LA LISTA
   let filteredCoins = listToShow;
 
-  // FILTRO CAMBIO 24H
+  // filtro de los cambios en 24h
   if (filters.change24h === "positive") {
     filteredCoins = filteredCoins.filter(
       (c) => c.price_change_percentage_24h > 0,
@@ -39,7 +39,7 @@ export default function CryptoList() {
     );
   }
 
-  // FILTRO PRECIO
+  // filtro de precio
   if (filters.price === "low") {
     filteredCoins = filteredCoins.filter((c) => c.current_price < 1);
   }
@@ -52,7 +52,7 @@ export default function CryptoList() {
     filteredCoins = filteredCoins.filter((c) => c.current_price > 1000);
   }
 
-  // LOADING
+  // loading y error
   if (isLoading)
     return (
       <div className="card">
@@ -82,22 +82,22 @@ export default function CryptoList() {
           alignItems: "center",
           marginBottom: "20px",
           gap: "20px",
-          flexWrap: "nowrap", // ❗ evita que los filtros bajen
+          flexWrap: "nowrap", // ❗ cod para evitar que los filtros bajen
         }}
       >
-        {/* SEARCHBAR A LA IZQUIERDA */}
+        {/* searchbar a la izquierda */}
         <div style={{ flexGrow: 1 }}>
           <SearchBar coins={coins} setFiltered={setFiltered} />
         </div>
 
-        {/* FILTROS A LA DERECHA */}
+        {/* filtros a la derecha */}
         <div style={{ flexShrink: 0 }}>
           <Filters setFilters={setFilters} />
         </div>
       </div>
 
 
-      {/* TABLA */}
+      {/* TABLA DE CONTENIDO */}
       <table className="table">
         <thead>
           <tr>

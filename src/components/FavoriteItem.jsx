@@ -44,7 +44,7 @@ export default function FavoriteItem({ coin, toggleFavorite }) {
       {/* Botón para quitar de favoritos */}
       <button
         onClick={(e) => {
-          e.stopPropagation(); // evita que abra la página al quitar favorito
+          e.stopPropagation(); // cod que evita abrir la página al quitar favorito
           toggleFavorite(coin.id);
         }}
         style={{

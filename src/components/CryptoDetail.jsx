@@ -29,7 +29,8 @@ export default function CryptoDetail() {
 
   return (
     <div className="card" style={{ padding: "32px" }}>
-      {/* BOTÓN VOLVER */}
+
+      {/* boton volver */}
       <button
         onClick={() => navigate(-1)}
         style={{
@@ -45,14 +46,14 @@ export default function CryptoDetail() {
         ← Volver
       </button>
 
-      {/* TABS */}
+      {/* tabs info */}
       <Tabs
         tabs={{
           Overview: (
             <div
               style={{ display: "flex", flexDirection: "column", gap: "24px" }}
             >
-              {/* FILA SUPERIOR: logo + info + botón */}
+              {/* FILA SUPERIOR: logo moneda + info + botón fav*/}
               <div
                 style={{
                   display: "flex",
@@ -61,7 +62,7 @@ export default function CryptoDetail() {
                   gap: "24px",
                 }}
               >
-                {/* IZQUIERDA */}
+                {/* IZQUIERDA - content */}
                 <div
                   style={{ display: "flex", gap: "24px", alignItems: "center" }}
                 >
@@ -86,7 +87,7 @@ export default function CryptoDetail() {
                   </div>
                 </div>
 
-                {/* DERECHA: botón favoritos */}
+                {/* DERECHA: botón fav */}
                 <button
                   onClick={() => toggleFavorite(id)}
                   style={{
@@ -115,7 +116,7 @@ export default function CryptoDetail() {
                 </button>
               </div>
 
-              {/* ABOUT DENTRO DEL OVERVIEW */}
+              {/* ABOUT - descrip de la moneda */}
               <div style={{ opacity: 0.85, lineHeight: "1.6" }}>
                 <h3>Sobre {coin.name}</h3>
 
